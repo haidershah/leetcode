@@ -3,35 +3,30 @@
  */
 class NumArray(nums: IntArray) {
 
-    val prefixSum = IntArray(nums.size)
+    val prefixSum = IntArray(nums.size + 1)
 
     /**
-    Time - O(n)
-    Space - O(n)
+        Time - O(n)
+        Space - O(n)
 
-    n - number of elements
+        n - number of elements
      */
     init {
-        var currentSum = 0
+        prefixSum[0] = 0
 
-        for (i in nums.indices) {
-            currentSum += nums[i]
-
-            prefixSum[i] = currentSum
+        for (i in 0..nums.size - 1) {
+            prefixSum[i + 1] = prefixSum[i] + nums[i]
         }
     }
 
     /**
-    Time - O(1)
-    Space - O(1)
+        Time - O(1)
+        Space - O(1)
 
-    n - number of elements
+        n - number of elements
      */
     fun sumRange(left: Int, right: Int): Int {
-        var leftSum = if(left == 0) 0 else prefixSum[left - 1]
-        var rightSum = prefixSum[right]
-
-        return rightSum - leftSum
+        return prefixSum[right + 1] - prefixSum[left]
     }
 }
 
