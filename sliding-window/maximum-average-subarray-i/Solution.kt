@@ -3,6 +3,8 @@
     Space - O(1)
 
     n - number of elements
+
+    https://leetcode.com/problems/maximum-average-subarray-i/
  */
 class Solution {
     fun findMaxAverage(nums: IntArray, k: Int): Double {
