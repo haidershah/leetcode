@@ -9,18 +9,16 @@
  */
 class Solution {
     fun nextGreaterElement(nums1: IntArray, nums2: IntArray): IntArray {
-        val result: IntArray = IntArray(nums1.size)
+        val result: IntArray = IntArray(nums1.size) { -1 }
 
-        for(i in 0..nums1.size - 1) {
+        for(i in nums1.indices) {
             val num1 = nums1[i]
             var isNumFound = false
-            var isResultFound = false
 
             for(num2 in nums2) {
                 if(isNumFound) {
                     if (num2 > num1) {
                         result[i] = num2
-                        isResultFound = true
                         break
                     }
                 } else {
@@ -28,10 +26,6 @@ class Solution {
                         isNumFound = true
                     }
                 }
-            }
-
-            if(!isResultFound) {
-                result[i] = -1
             }
         }
 
